@@ -1,7 +1,7 @@
 <template>
   <div id="ContainerC">
     <el-container style="position:absolute;left:0;right:0;top:0;bottom:0;">
-      <el-header height="8vh">
+      <el-header height="8vh" style="padding: 0px">
         <topNav></topNav>
       </el-header>
       <el-container>
@@ -11,8 +11,7 @@
         <el-main>
           <analysisNode v-if="this.$store.state.show1"></analysisNode>
           <forecastNode v-if="this.$store.state.show2"></forecastNode>
-          <decisionNode v-if="this.$store.state.show3"></decisionNode>
-          <elecMapNode v-if="this.$store.state.show4"></elecMapNode>
+          <dataCenterNode v-if="this.$store.state.show3"></dataCenterNode>
         </el-main>
       </el-container>
     </el-container>
@@ -24,8 +23,7 @@ import sideNav from '../navigateBar/sideNav.vue';
 import topNav from '../navigateBar/topNav.vue';
 import analysisNode from '../Fun1_analysis/analysisNode.vue'
 import forecastNode from '../Fun2_forecast/forecastNode.vue'
-import decisionNode from '../Fun3_decision/decisionNode.vue'
-import elecMapNode from '../Fun4_elecMap/elecMapNode.vue'
+import dataCenterNode from '../Fun_dataCenter/dataCenterNode.vue';
 export default {
   name: 'ContainerC',
   data() {
@@ -38,15 +36,15 @@ export default {
     topNav,
     analysisNode,
     forecastNode,
-    decisionNode,
-    elecMapNode,
+    dataCenterNode
   }
 }
 </script>
 
 <style>
 .el-header {
-  background-color: #454f59;
+  background-color: white;
+  z-index: 100;
 }
 
 #ContainerC {

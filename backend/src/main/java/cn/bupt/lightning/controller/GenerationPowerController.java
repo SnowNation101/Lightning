@@ -4,12 +4,12 @@ import cn.bupt.lightning.domain.PresentData;
 import cn.bupt.lightning.service.GenerationPowerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 @Slf4j
@@ -44,12 +44,55 @@ public class GenerationPowerController {
       method = RequestMethod.GET
   )
   Void runPythonScript() throws IOException {
-    String line = "D:/ProgramData/Anaconda3/envs/lightning/python.exe  D:\\dev\\lightning\\backend\\src\\main\\py_script\\model_using_withsql.py";
-    CommandLine cmdLine = CommandLine.parse(line);
+    try {
+      ProcessBuilder pb = new ProcessBuilder("D:/ProgramData/Anaconda3/envs/lightning/python.exe",
+          "D:/dev/lightning/backend/src/main/py_script/model_using_with_sql.py");
+      pb.redirectErrorStream(true);
+      Process process = pb.start();
+      int exitValue = process.waitFor();
+      if (exitValue == 0) {
+        System.out.println("Python script executed successfully");
+      } else {
+        System.out.println("Python script execution failed");
+      }
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
-    DefaultExecutor executor = new DefaultExecutor();
-
-    executor.execute(cmdLine);
+  @RequestMapping(
+      value = "/predict",
+      method = RequestMethod.POST
+  )
+  Float getPredict(@RequestParam Float temperature,
+                   @RequestParam Float humidity,
+                   @RequestParam Float lightIntensity,
+                   @RequestParam  Float windSpeed) {
+    try {
+      ProcessBuilder pb = new ProcessBuilder("D:/ProgramData/Anaconda3/envs/lightning/python.exe",
+          "D:/dev/lightning/backend/src/main/py_script/model_using_new.py",
+          Float.toString(temperature),
+          Float.toString(humidity),
+          Float.toString(lightIntensity),
+          Float.toString(windSpeed));
+      pb.redirectErrorStream(true);
+      Process process = pb.start();
+      BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+        return Float.parseFloat(line);
+      }
+      int exitValue = process.waitFor();
+      if (exitValue == 0) {
+        System.out.println("Python script executed successfully");
+      } else {
+        System.out.println("Python script execution failed");
+      }
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
+    }
     return null;
   }
 

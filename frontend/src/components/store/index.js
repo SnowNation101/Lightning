@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    predictRes:0,
     errorState: false,
     load1: false,
     load2: false,
@@ -17,10 +18,212 @@ export default new Vuex.Store({
       value: '2',
       label: 'A002'
     },],
-    show1: true,
+    show1: false,
     show2: false,
-    show3: false,
+    show3: true,
     show4: false,
+    Option_dc_power: {
+      title: {
+        text: '预测功率曲线'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          // console.log(params[0].data)
+          return (
+            "此时功率: " +
+            (params[0].data).toFixed(4)
+          );
+        },
+        axisPointer: {
+          animation: false
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: []
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: 'Power',
+          type: 'line',
+          showSymbol: false,
+          data: [],
+        }
+      ]
+    },
+    Option_dc_light: {
+      title: {
+        text: '光照曲线'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          // console.log(params[0].data)
+          return (
+            "此时光照: " +
+            (params[0].data).toFixed(4)
+          );
+        },
+        axisPointer: {
+          animation: false
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: []
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: 'Power',
+          type: 'line',
+          showSymbol: false,
+          data: [],
+          lineStyle: {
+            color: '#9466FF'
+          }
+        }
+      ]
+    },
+    Option_dc_wind: {
+      title: {
+        text: '风速曲线'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          // console.log(params[0].data)
+          return (
+            "此时风速: " +
+            (params[0].data).toFixed(4)
+          );
+        },
+        axisPointer: {
+          animation: false
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: []
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: 'Power',
+          type: 'line',
+          showSymbol: false,
+          data: [],
+          lineStyle: {
+            color: '#9466FF'
+          }
+        }
+      ]
+    },
+    Option_dc_humid: {
+      title: {
+        text: '湿度曲线'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          // console.log(params[0].data)
+          return (
+            "此时湿度: " +
+            (params[0].data).toFixed(4)
+          );
+        },
+        axisPointer: {
+          animation: false
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: []
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: 'Power',
+          type: 'line',
+          showSymbol: false,
+          data: [],
+          lineStyle: {
+            color: '#9466FF'
+          }
+        }
+      ]
+    },
+    Option_dc_temper: {
+      title: {
+        text: '温度曲线'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          // console.log(params[0].data)
+          return (
+            "此时温度: " +
+            (params[0].data).toFixed(4)
+          );
+        },
+        axisPointer: {
+          animation: false
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: []
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: 'Power',
+          type: 'line',
+          showSymbol: false,
+          data: [],
+          lineStyle: {
+            color: '#9466FF'
+          }
+        }
+      ]
+    },
     option_1_line: {
       tooltip: {
         trigger: 'axis',
@@ -1004,7 +1207,7 @@ export default new Vuex.Store({
     getOption_2_line_1(state, data) { //获取功能2折线图1信息
       for (let i = 0; i < 96; i++) {
         state.option_2_line_1.series[0].data[i] = data[i].predictVal
-        state.forecastFactor[i].forecast = data[i].predictVal
+        state.forecastFactor[i].forecast = data[i].predictVal.toFixed(4)
         state.forecastFactor[i].humidity = data[i].humidity
         state.forecastFactor[i].light = data[i].lightIntensity
         state.forecastFactor[i].wind = data[i].windSpeed
@@ -1017,14 +1220,20 @@ export default new Vuex.Store({
         state.option_2_line_2.series[0].data = data
       }
     },
+    getPredictRes(state, data){
+      state.predictRes=data
+    },
     getErrorState(state) {
       axios({
-        url: 'http://localhost:8088/api/test/is-error',
+        url: 'http://localhost:8080/api/test/is-error',
         method: 'GET',
       }).then(res => {
         state.errorState = res.data
       })
       state.errorState
+    },
+    reverseFlag(state) {
+      state.load2 = !state.load2;
     }
   },
   // 操作异步操作mutation
@@ -1032,7 +1241,7 @@ export default new Vuex.Store({
     /* eslint-disable */
     getOption_1_line(context, id) {
       axios({
-        url: 'http://localhost:8088/api/generation/last-year',
+        url: 'http://localhost:8080/api/generation/last-year',
         method: 'POST',
         params: { station: id }
       }).then(res => {
@@ -1041,7 +1250,7 @@ export default new Vuex.Store({
     },
     getOption_1_bar(context, id) {
       axios({
-        url: 'http://localhost:8088/api/generation/last-year',
+        url: 'http://localhost:8080/api/generation/last-year',
         method: 'POST',
         params: { station: id }
       }).then(res => {
@@ -1049,23 +1258,40 @@ export default new Vuex.Store({
       })
     },
     getOption_2_line_1(context, id) {
-      // this.state.load2 = true;
+      context.commit("reverseFlag")
       axios({
-        url: 'http://localhost:8088/api/power/96-predict',
+        url: 'http://localhost:8080/api/power/96-predict',
         method: 'POST',
         params: { station: id }
       }).then(res => {
         context.commit("getOption_2_line_1", res.data)
-        // this.state.load2 = false;
+        context.commit("reverseFlag")
       })
     },
     getOption_2_line_2(context, id) {
       axios({
-        url: 'http://localhost:8088/api/power/96-error',
+        url: 'http://localhost:8080/api/power/96-error',
         method: 'POST',
         params: { station: id }
       }).then(res => {
         context.commit("getOption_2_line_2", res.data)
+      })
+    },
+    getPredictRes(context, args) {
+      // light, wind, temper, humid
+      axios({
+        url: 'http://localhost:8080/api/power/predict',
+        method: 'POST',
+        params: {
+          temperature: args[0],
+          humidity: args[1],
+          lightIntensity: args[2],
+          windSpeed: args[3]
+        }
+      }).then(res => {
+        console.log(res.data)
+        // return res.data;
+        context.commit("getPredictRes",res.data)
       })
     }
   },

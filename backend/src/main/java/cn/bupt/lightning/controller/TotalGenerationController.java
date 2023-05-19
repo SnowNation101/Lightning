@@ -34,12 +34,4 @@ public class TotalGenerationController {
     return service.getLastMonthData(station);
   }
 
-  @RequestMapping(
-      value = "/test",
-      method = RequestMethod.GET
-  )
-  String test() {
-    return "okokokokokokokokokok";
-  }
-
 }

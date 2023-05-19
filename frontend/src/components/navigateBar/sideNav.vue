@@ -1,21 +1,20 @@
 <template>
     <div id="sideNav">
         <el-menu id="elm" default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-            background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-            <el-menu-item index="1" @click="show1()">
+            background-color="#fff" text-color="#545c64" active-text-color="#1b3dd4">
+            <el-menu-item index="1" @click="show3()">
                 <i class="el-icon-menu"></i>
+                <span slot="title">数据中心</span>
+            </el-menu-item>
+            <el-menu-item index="2" @click="show1()">
+                <i class="el-icon-document"></i>
                 <span slot="title">数据分析</span>
             </el-menu-item>
-            <el-menu-item index="2" @click="show2()">
-                <i class="el-icon-document"></i>
+            <el-menu-item index="3" @click="show2()">
+                <i class="el-icon-thumb"></i>
                 <span slot="title">功率预测</span>
             </el-menu-item>
-            <el-menu-item index="3" @click="show3()">
-                <i class="el-icon-thumb"></i>
-                <span slot="title">辅助决策</span>
-            </el-menu-item>
         </el-menu>
-
     </div>
 </template>
 
@@ -48,6 +47,16 @@ export default {
 <style>
 #elm {
     overflow:hidden;
-    height: 92vh;
+    height: 88vh;
+    font-weight: bold;
+    padding: 10px 2%;
+}
+.el-menu-item i {
+    font-size: 24px;
+    line-height: 24px;
+}
+.el-menu-item span {
+    font-size: 16px;
+    line-height: 24px;
 }
 </style>

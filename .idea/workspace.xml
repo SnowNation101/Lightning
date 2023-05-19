@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09c56acf-1695-436b-bd99-46e384a85e86" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/LightningApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/config/TotalGenerationConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/controller/GenerationPowerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/controller/TotalGenerationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/controller/WeatherDataController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/domain/GenerationPower.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/domain/TotalGeneration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/domain/WeatherData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/repo/GenerationPowerRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/repo/TotalGenerationRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/repo/WeatherDataRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/GenerationPowerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/GenerationPowerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/TotalGenerationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/TotalGenerationServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/WeatherDataService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bupt/lightning/service/WeatherDataServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cn/bupt/lightning/LightningApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +16,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,6 +58,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/dev/Lightning/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -79,6 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670576156247</updated>
       <workItem from="1670576158629" duration="38000" />
+      <workItem from="1670838790043" duration="1076000" />
     </task>
     <servers />
   </component>

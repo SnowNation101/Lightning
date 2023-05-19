@@ -1,10 +1,10 @@
 <template>
-    <div id="topNav" >
-        <div id="icon" style="padding:8px 0;">
-            <i class="el-icon-lightning"> Lightning</i>
+    <div id="topNav">
+        <div id="icon">
+            <i class="el-icon-lightning"></i>
         </div>
         <div id="text">
-            <i> 光伏发电功率预测系统</i>
+            <i>Lightning</i>
         </div>
     </div>
 </template>
@@ -16,16 +16,25 @@ export default {
 </script>
 
 <style>
-#topNav{
-    width:100%;
-    height:100%;
+#topNav {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
 }
+
 #icon {
-    font-family:Arial,Helvetica,sans-serif;
-    color:azure;
+    color: rgb(27, 61, 212);
+    font-size: 2em;
+    padding: 15px 0;
+    padding-left: 20px;
 }
+
 #text {
-    font-family:Arial,Helvetica,sans-serif;
-    color:azure;
+    color: rgb(27, 61, 212);
+    font-size: 24px;
+    padding: 18px 0;
+    padding-left: 10px;
 }
 </style>
