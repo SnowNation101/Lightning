@@ -12,6 +12,7 @@
           <analysisNode v-if="this.$store.state.show1"></analysisNode>
           <forecastNode v-if="this.$store.state.show2"></forecastNode>
           <dataCenterNode v-if="this.$store.state.show3"></dataCenterNode>
+          <decisionNode v-if="this.$store.state.show4"></decisionNode>
         </el-main>
       </el-container>
     </el-container>
@@ -24,6 +25,7 @@ import topNav from '../navigateBar/topNav.vue';
 import analysisNode from '../Fun1_analysis/analysisNode.vue'
 import forecastNode from '../Fun2_forecast/forecastNode.vue'
 import dataCenterNode from '../Fun_dataCenter/dataCenterNode.vue';
+import decisionNode from '../Fun3_decision/decisionNode.vue';
 export default {
   name: 'ContainerC',
   data() {
@@ -36,8 +38,9 @@ export default {
     topNav,
     analysisNode,
     forecastNode,
-    dataCenterNode
-  }
+    dataCenterNode,
+    decisionNode
+}
 }
 </script>
 

@@ -49,29 +49,54 @@ public class GenerationPowerServiceImpl implements GenerationPowerService {
     LocalDateTime from = cal.getTime().toInstant()
         .atZone(ZoneId.systemDefault())
         .toLocalDateTime();
-    log.info(from.toString());
 
     cal.add(Calendar.DATE, 1);
     LocalDateTime to = cal.getTime().toInstant()
         .atZone(ZoneId.systemDefault())
         .toLocalDateTime();
 
-    log.info(to.toString());
-    List<Float> predictList = generationPowerRepo.findAllByTimeBetweenAndStationOrderByTime(from, to, station)
+    Calendar now = Calendar.getInstance();
+    cal.add(Calendar.DATE, -1);
+    cal.set(Calendar.HOUR_OF_DAY, now.get(Calendar.HOUR_OF_DAY));
+    cal.set(Calendar.MINUTE, now.get(Calendar.MINUTE));
+    cal.set(Calendar.SECOND, now.get(Calendar.SECOND));
+    cal.set(Calendar.MILLISECOND, now.get(Calendar.MILLISECOND));
+    LocalDateTime now_time = cal.getTime().toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDateTime();
+
+    List<Float> predictList_1 = generationPowerRepo.findAllByTimeBetweenAndStationOrderByTime(now_time, to, station)
         .stream()
         .map(GenerationPower::getPredictVal)
         .toList();
 
-    List<WeatherData> weatherList = weatherDataRepo.findAllByTimeBetweenOrderByTime(from, to);
+    List<WeatherData> weatherList_1 = weatherDataRepo.findAllByTimeBetweenOrderByTime(now_time, to);
+
+    List<Float> predictList_2 = generationPowerRepo.findAllByTimeBetweenAndStationOrderByTime(from, now_time, station)
+        .stream()
+        .map(GenerationPower::getPredictVal)
+        .toList();
+    List<WeatherData> weatherList_2 = weatherDataRepo.findAllByTimeBetweenOrderByTime(from, now_time);
 
     List<PresentData> ret = new ArrayList<>();
-    for (int i = 0; i < 96; i++) {
+
+    for (int i = 0; i < weatherList_1.size(); i++) {
       PresentData presentData = new PresentData();
-      presentData.setPredictVal(predictList.get(i));
-      presentData.setHumidity(weatherList.get(i).getHumidity());
-      presentData.setTemperature(weatherList.get(i).getTemperature());
-      presentData.setLightIntensity(weatherList.get(i).getLightIntensity());
-      presentData.setWindSpeed(weatherList.get(i).getWindSpeed());
+      presentData.setPredictVal(predictList_1.get(i));
+      presentData.setHumidity(weatherList_1.get(i).getHumidity());
+      presentData.setTemperature(weatherList_1.get(i).getTemperature());
+      presentData.setLightIntensity(weatherList_1.get(i).getLightIntensity());
+      presentData.setWindSpeed(weatherList_1.get(i).getWindSpeed());
+      ret.add(presentData);
+    }
+
+    for (int i = 0; i < weatherList_2.size(); i++) {
+      PresentData presentData = new PresentData();
+      presentData.setPredictVal(predictList_2.get(i));
+      presentData.setHumidity(weatherList_2.get(i).getHumidity());
+      presentData.setTemperature(weatherList_2.get(i).getTemperature());
+      presentData.setLightIntensity(weatherList_2.get(i).getLightIntensity());
+      presentData.setWindSpeed(weatherList_2.get(i).getWindSpeed());
       ret.add(presentData);
     }
 

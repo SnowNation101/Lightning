@@ -14,6 +14,10 @@
                 <i class="el-icon-thumb"></i>
                 <span slot="title">功率预测</span>
             </el-menu-item>
+            <el-menu-item index="4" @click="show4()">
+                <i class="el-icon-thumb"></i>
+                <span slot="title">辅助决策</span>
+            </el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -28,16 +32,16 @@ export default {
         handleClose(key, keyPath) {
             console.log(key, keyPath);
         },
-        show1(){
+        show1() {
             this.$store.commit("show1");
         },
-        show2(){
+        show2() {
             this.$store.commit("show2");
         },
-        show3(){
+        show3() {
             this.$store.commit("show3");
         },
-        show4(){
+        show4() {
             this.$store.commit("show4");
         },
     }
@@ -46,15 +50,17 @@ export default {
 
 <style>
 #elm {
-    overflow:hidden;
+    overflow: hidden;
     height: 88vh;
     font-weight: bold;
     padding: 10px 2%;
 }
+
 .el-menu-item i {
     font-size: 24px;
     line-height: 24px;
 }
+
 .el-menu-item span {
     font-size: 16px;
     line-height: 24px;
