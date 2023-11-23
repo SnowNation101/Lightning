@@ -66,7 +66,7 @@
 
 | Name           | E-mail                    |
 | -------------- | ------------------------- |
-| Penghui Xiao   | 2604280565@qq.com         |
+| Penghui Xiao   | xph@bupt.edu.cn           |
 | Chenghao Zhang | davidzhang101@outlook.com |
 | Aijia Lei      | leiaijia@bupt.edu.cn      |
 | Boxuan Xu      | XuBoxuan@bupt.edu.cn      |
