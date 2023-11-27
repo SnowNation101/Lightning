@@ -1,5 +1,13 @@
 <h1 align="center">Lightning</h1>
 
+<div align="center">
+  <a href="https://github.com/SnowNation101/Lightning/network/members">
+    <img src="https://img.shields.io/github/forks/SnowNation101/Lightning?label=Forks" alt="Forks">
+  </a>
+  <a href="https://github.com/SnowNation101/Lightning/stargazers">
+    <img src="https://img.shields.io/github/stars/SnowNation101/Lightning?color=green&label=Stars" alt="Stars">
+  </a>
+</div>
 
 ## 项目介绍（Introduction）
 
